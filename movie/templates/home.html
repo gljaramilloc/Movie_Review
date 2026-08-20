@@ -13,7 +13,7 @@
                 <label for="searchMovie" class="form-label fw-semibold">
                     Search for Movie:
                 </label>
-                <input type="text" class="form-control" name="searchMovie" id="searchMovie" />
+                <input type="text" class="form-control mb-3" name="searchMovie" id="searchMovie" />
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
@@ -26,8 +26,18 @@
                     <div class="card h-100">
                         <img src="{{ movie.image.url }}" class="card-img-top" alt="{{ movie.title }}">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                            <h5 class="card-title">{{ movie.title }}</h5>
+                            
+                            <!-- Atributos agregados: Genre y Year -->
+                            {% if movie.genre %}
+                                <p class="card-text mb-1"><strong>Genre:</strong> {{ movie.genre }}</p>
+                            {% endif %}
+                            {% if movie.year %}
+                                <p class="card-text mb-2"><strong>Year:</strong> {{ movie.year }}</p>
+                            {% endif %}
+
                             <p class="card-text">{{ movie.description }}</p>
+
                             {% if movie.url %}
                                 <a href="{{ movie.url }}" class="btn btn-primary">Movie Link</a>
                             {% endif %}
